@@ -1,10 +1,7 @@
-# algebra-ring
 
-> define an [algebra ring][1] structure
-
-```
 var algebraGroup = require('algebra-group'),
-    algebraRing  = require('algebra-ring)
+    algebraRing  = require('./index'),
+    test         = require('tape')
 
 function contains (a) {
   // NaN, Infinity and -Infinity are not allowed
@@ -25,8 +22,9 @@ function inversion (a) { return 1 / a }
 
 var R = algebraRing(realGroup, 1, multiplication, inversion)
 
-R.equality(R.division(2, 2), R.one)
-```
+test('example', function (t) {
+  t.plan(1)                                                                                                                                                      
 
-  [1]: https://en.wikipedia.org/wiki/Ring_(mathematics) "Ring"
+  t.ok(R.equality(R.division(2, 2), R.one))
+})  
 
