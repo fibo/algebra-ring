@@ -4,7 +4,7 @@
 
 ```
 var algebraGroup = require('algebra-group'),
-    algebraRing  = require('algebra-ring)
+    algebraRing  = require('algebra-ring')
 
 function contains (a) {
   // NaN, Infinity and -Infinity are not allowed
