@@ -37,7 +37,7 @@ var R = ring([0, 1], {
 
 ```
 
-You get an [algebra ring] that is an [algebra group][2] with *multiplication*.
+You get an [algebra ring][1] that is an [algebra group][2] with *multiplication*.
 Its inverse operators is *division*.
 
 ```
