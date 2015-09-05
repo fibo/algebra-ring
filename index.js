@@ -1,57 +1,73 @@
 
+var group = require('algebra-group')
+
 /**
  * Define an algebra ring structure
  *
- * @param {Object} group
- * @param {*} identity a.k.a one
- * @param {Function} multiplication
- * @param {Function} inversion
+ * @param {Array} identity
+ * @param {*}     identity[0] a.k.a zero
+ * @param {*}     identity[1] a.k.a uno
+ * @param {Object}   given operator functions
+ * @param {Function} given.contains
+ * @param {Function} given.equality
+ * @param {Function} given.addition
+ * @param {Function} given.negation
+ * @param {Function} given.multiplication
+ * @param {Function} given.inversion
  *
  * @returns {Object} ring
  */
 
-function algebraRing (group, identity, multiplication, _inversion) {
-  var ring = {}
+function algebraRing (identity, given) {
+
+  // A ring is a group, with multiplication.
+
+  var ring = group({
+    identity       : identity[0],
+    contains       : given.contains,
+    equality       : given.equality,
+    compositionLaw : given.addition,
+    inversion      : given.negation
+  })
 
   // operators
 
-  ring.contains    = group.contains
-  ring.notContains = group.notContains
-  ring.addition    = group.addition
-  ring.negation    = group.negation
-  ring.subtraction = group.subtraction
-  ring.equality    = group.equality
-  ring.disequality = group.disequality
-
-  if (typeof multiplication !== 'function')
-    throw new TypeError('"multiplication" operator must be a function')
-
-  if (typeof _inversion !== 'function')
-    throw new TypeError('"inversion" operator must be a function')
-
-  function inversion (a) {
-    if (ring.equality(a, group.zero))
-      throw new TypeError('Cannot divide by zero.')
-
-    return _inversion(a)
+  function multiplication () {
+    return [].slice.call(arguments).reduce(given.multiplication)
   }
 
-  function division (a, b) {
-    return multiplication(a, inversion(b))
+  function inversion (a) {
+    if (ring.equality(a, ring.zero))
+      throw new TypeError('algebra-ring: Cannot divide by zero.')
+
+    return given.inversion(a)
+  }
+
+  function division (a) {
+    var rest = [].slice.call(arguments, 1)
+
+    return given.multiplication(a, rest.map(given.inversion).reduce(given.multiplication))
   }
 
   ring.multiplication = multiplication
   ring.inversion      = inversion
   ring.division       = division
 
-  // identities
+  // Multiplicative identity.
 
-  ring.zero = group.zero
+  var one = identity[1]
 
-  if (ring.notContains(identity))
-    throw new TypeError('"identity" must be contained in ring set')
+  if (ring.notContains(one))
+    throw new TypeError('algebra-ring: "identity" must be contained in ring set')
 
-  ring.one = identity 
+  // Check that one*one=one.
+  if (ring.disequality(given.multiplication(one, one), one))
+    throw new TypeError('algebra-ring: "identity" is not neutral')
+
+  if (ring.notContains(identity[1]))
+    throw new TypeError('algebra-ring:"identity" must be contained in ring set')
+
+  ring.one = identity[1]
 
   return ring
 }
