@@ -38,7 +38,21 @@ var R = ring([0, 1], {
 ```
 
 You get an [algebra ring][1] that is an [algebra group][2] with *multiplication*.
-Its inverse operators is *division*.
+Its inverse operator is *division*.
+
+This is the list of ring operators:
+* contains
+* notContains
+* equality
+* disequality
+* addition
+* subtraction
+* negation
+* multiplication
+* division
+* inversion
+
+The neutral element for addition and multiplication are, as usual, called *zero* and *one* respectively.
 
 ```
 R.contains(10) // true
@@ -58,11 +72,7 @@ R.multiplication(2, 2, 2, 2) // 16
 R.equality(R.inversion(10), 0.1) // true
 
 R.division(1, 2) // 0.5
-```
 
-The neutral element for addition and multiplication are, as usual, called *zero* and *one* respectively.
-
-```
 R.equality(R.addition(2, R.zero), 2) // true
 R.equality(R.subtraction(2, 2), R.zero) // true
 
