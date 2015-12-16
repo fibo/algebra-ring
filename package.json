@@ -1,7 +1,13 @@
 {
   "name": "algebra-ring",
+  "description": "defines and algebra ring structure",
   "version": "0.2.0",
-  "description": "define and algebra ring structure",
+  "homepage": "https://github.com/fibo/algebra-ring",
+  "author": {
+    "name": "Gianluca Casati",
+    "url": "http://g14n.info"
+  },
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "test": "node test.js | ./node_modules/tap-min/bin/tap-min"
@@ -13,7 +19,6 @@
   "keywords": [
     "algebra"
   ],
-  "author": "",
   "license": [
     {
       "type": "MIT",
@@ -23,7 +28,6 @@
   "bugs": {
     "url": "https://github.com/fibo/algebra-ring/issues"
   },
-  "homepage": "https://github.com/fibo/algebra-ring",
   "devDependencies": {
     "tap-min": "^1.0.0",
     "tape": "^4.2.0"

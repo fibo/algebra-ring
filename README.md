@@ -1,6 +1,6 @@
 # algebra-ring
 
-> define an [algebra ring][1] structure
+> defines an [algebra ring][1] structure
 
 ## Example
 
