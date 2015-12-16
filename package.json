@@ -26,7 +26,6 @@
     "url": "https://github.com/fibo/algebra-ring/issues"
   },
   "devDependencies": {
-    "standard": "^5.4.1",
     "tap-min": "^1.0.0",
     "tape": "^4.2.0"
   },
