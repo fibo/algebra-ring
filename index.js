@@ -1,4 +1,3 @@
-
 var group = require('algebra-group')
 
 /**
@@ -19,15 +18,14 @@ var group = require('algebra-group')
  */
 
 function algebraRing (identity, given) {
-
   // A ring is a group, with multiplication.
 
   var ring = group({
-    identity       : identity[0],
-    contains       : given.contains,
-    equality       : given.equality,
-    compositionLaw : given.addition,
-    inversion      : given.negation
+    identity: identity[0],
+    contains: given.contains,
+    equality: given.equality,
+    compositionLaw: given.addition,
+    inversion: given.negation
   })
 
   // operators
@@ -37,8 +35,9 @@ function algebraRing (identity, given) {
   }
 
   function inversion (a) {
-    if (ring.equality(a, ring.zero))
+    if (ring.equality(a, ring.zero)) {
       throw new TypeError('algebra-ring: Cannot divide by zero.')
+    }
 
     return given.inversion(a)
   }
@@ -50,22 +49,25 @@ function algebraRing (identity, given) {
   }
 
   ring.multiplication = multiplication
-  ring.inversion      = inversion
-  ring.division       = division
+  ring.inversion = inversion
+  ring.division = division
 
   // Multiplicative identity.
 
   var one = identity[1]
 
-  if (ring.notContains(one))
+  if (ring.notContains(one)) {
     throw new TypeError('algebra-ring: "identity" must be contained in ring set')
+  }
 
   // Check that one*one=one.
-  if (ring.disequality(given.multiplication(one, one), one))
+  if (ring.disequality(given.multiplication(one, one), one)) {
     throw new TypeError('algebra-ring: "identity" is not neutral')
+  }
 
-  if (ring.notContains(identity[1]))
+  if (ring.notContains(identity[1])) {
     throw new TypeError('algebra-ring:"identity" must be contained in ring set')
+  }
 
   ring.one = identity[1]
 
@@ -73,4 +75,3 @@ function algebraRing (identity, given) {
 }
 
 module.exports = algebraRing
-

@@ -1,6 +1,5 @@
-
-var ring = require('./index'),
-    test = require('tape')
+var ring = require('./index')
+var test = require('tape')
 
 function contains (a) {
   return (typeof a === 'number' && isFinite(a))
@@ -17,12 +16,12 @@ function multiplication (a, b) { return a * b }
 function inversion (a) { return 1 / a }
 
 var R = ring([0, 1], {
-  equality       : equality,
-  contains       : contains,
-  addition       : addition,
-  negation       : negation,
-  multiplication : multiplication,
-  inversion      : inversion
+  equality: equality,
+  contains: contains,
+  addition: addition,
+  negation: negation,
+  multiplication: multiplication,
+  inversion: inversion
 })
 
 test('Real ring', function (t) {
@@ -52,4 +51,3 @@ test('Real ring', function (t) {
   t.ok(R.equality(R.multiplication(2, R.one), 2))
   t.ok(R.equality(R.division(2, 2), R.one))
 })
-

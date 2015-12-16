@@ -2,6 +2,8 @@
 
 > defines an [algebra ring][1] structure
 
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 ## Example
 
 All code in the examples below is intended to be contained into a [single file](https://github.com/fibo/algebra-ring/blob/master/test.js).
@@ -27,14 +29,13 @@ function inversion (a) { return 1 / a }
 
 // Create a ring by defining its identities and operators.
 var R = ring([0, 1], {
-  equality       : equality,
-  contains       : contains,
-  addition       : addition,
-  negation       : negation,
-  multiplication : multiplication,
-  inversion      : inversion
+  equality: equality,
+  contains: contains,
+  addition: addition,
+  negation: negation,
+  multiplication: multiplication,
+  inversion: inversion
 })
-
 ```
 
 You get an [algebra ring][1] that is an [algebra group][2] with *multiplication*.
