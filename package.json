@@ -1,6 +1,6 @@
 {
   "name": "algebra-ring",
-  "description": "defines and algebra ring structure",
+  "description": "defines an algebra ring structure",
   "version": "0.3.0",
   "homepage": "https://github.com/fibo/algebra-ring",
   "author": {
