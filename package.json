@@ -31,6 +31,6 @@
     "tape": "^4.2.0"
   },
   "dependencies": {
-    "algebra-group": "^0.2.0"
+    "algebra-group": "^0.4.0"
   }
 }
