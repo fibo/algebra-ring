@@ -81,7 +81,16 @@ R.equality(R.subtraction(2, 2), R.zero) // true
 
 R.equality(R.multiplication(2, R.one), 2) // true
 R.equality(R.division(2, 2), R.one) // true
+
+R.division(1, 0) // will complain
+R.inversion(R.zero) // will complain too
 ```
+
+## Errors
+
+* cannotDivideByZero
+* doesNotContainIdentity
+* identityIsNotNeutral
 
   [1]: https://en.wikipedia.org/wiki/Ring_(mathematics) "Ring"
   [2]: https://www.npmjs.com/package/algebra-group "algebra-group"

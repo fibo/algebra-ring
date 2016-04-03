@@ -31,6 +31,7 @@
     "tape": "^4.2.0"
   },
   "dependencies": {
-    "algebra-group": "^0.4.0"
+    "algebra-group": "^0.4.0",
+    "static-props": "^0.2.0"
   }
 }

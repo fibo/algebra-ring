@@ -1,6 +1,8 @@
 var ring = require('./index')
 var test = require('tape')
 
+var error = ring.error
+
 function contains (a) {
   return (typeof a === 'number' && isFinite(a))
 }
@@ -25,7 +27,7 @@ var R = ring([0, 1], {
 })
 
 test('Real ring', function (t) {
-  t.plan(15)
+  t.plan(17)
 
   t.ok(R.contains(10))
   t.ok(R.contains(-1, 0.5, 5))
@@ -50,4 +52,12 @@ test('Real ring', function (t) {
 
   t.ok(R.equality(R.multiplication(2, R.one), 2))
   t.ok(R.equality(R.division(2, 2), R.one))
+
+  t.throws(function () {
+    R.division(1, 0)
+  }, error.cannotDivideByZero)
+
+  t.throws(function () {
+    R.inversion(R.zero)
+  }, error.cannotDivideByZero)
 })

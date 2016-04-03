@@ -1,4 +1,11 @@
 var group = require('algebra-group')
+var staticProps = require('static-props')
+
+var error = {
+  cannotDivideByZero: 'algebra-ring: Cannot divide by zero',
+  doesNotContainIdentity: 'algebra-ring: "identity" must be contained in ring set',
+  identityIsNotNeutral: 'algebra-ring: "identity" is not neutral'
+}
 
 /**
  * Define an algebra ring structure
@@ -36,7 +43,7 @@ function algebraRing (identity, given) {
 
   function inversion (a) {
     if (ring.equality(a, ring.zero)) {
-      throw new TypeError('algebra-ring: Cannot divide by zero.')
+      throw new TypeError(error.cannotDivideByZero)
     }
 
     return given.inversion(a)
@@ -45,7 +52,7 @@ function algebraRing (identity, given) {
   function division (a) {
     var rest = [].slice.call(arguments, 1)
 
-    return given.multiplication(a, rest.map(given.inversion).reduce(given.multiplication))
+    return given.multiplication(a, rest.map(inversion).reduce(given.multiplication))
   }
 
   ring.multiplication = multiplication
@@ -57,21 +64,23 @@ function algebraRing (identity, given) {
   var one = identity[1]
 
   if (ring.notContains(one)) {
-    throw new TypeError('algebra-ring: "identity" must be contained in ring set')
+    throw new TypeError(error.doesNotContainIdentity)
   }
 
   // Check that one*one=one.
   if (ring.disequality(given.multiplication(one, one), one)) {
-    throw new TypeError('algebra-ring: "identity" is not neutral')
+    throw new TypeError(error.identityIsNotNeutral)
   }
 
   if (ring.notContains(identity[1])) {
-    throw new TypeError('algebra-ring:"identity" must be contained in ring set')
+    throw new TypeError(error.doesNotContainIdentity)
   }
 
   ring.one = identity[1]
 
   return ring
 }
+
+staticProps(algebraRing)({error: error})
 
 module.exports = algebraRing
