@@ -8,7 +8,7 @@
 
 All code in the examples below is intended to be contained into a [single file](https://github.com/fibo/algebra-ring/blob/master/test.js).
 
-```
+```javascript
 var ring = require('algebra-ring')
 
 // Define operators.
@@ -42,6 +42,7 @@ You get an [algebra ring][1] that is an [algebra group][2] with *multiplication*
 Its inverse operator is *division*.
 
 This is the list of ring operators:
+
 * contains
 * notContains
 * equality
@@ -53,9 +54,10 @@ This is the list of ring operators:
 * division
 * inversion
 
-The neutral element for addition and multiplication are, as usual, called *zero* and *one* respectively.
+The neutral element for addition and multiplication are, as usual, called
+*zero* and *one* respectively.
 
-```
+```javascript
 R.contains(10) // true
 R.contains(-1, 0.5, Math.PI, 5) // true
 R.notContains(Infinity) // true
@@ -83,4 +85,3 @@ R.equality(R.division(2, 2), R.one) // true
 
   [1]: https://en.wikipedia.org/wiki/Ring_(mathematics) "Ring"
   [2]: https://www.npmjs.com/package/algebra-group "algebra-group"
-
