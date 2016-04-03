@@ -1,15 +1,30 @@
-# algebra-ring
+# algebra-ring-ring
 
-> defines an [algebra ring][1] structure
+> defines an [algebra-ring ring][1] structure
+
+**Table Of Contents:**
+
+* [Installation](#installation)
+* [Example](#example)
+* [API](#api)
+* [License](#license)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
+## Installation
+
+With [npm](https://npmjs.org/) do
+
+```bash
+$ npm install algebra-ring
+```
+
 ## Example
 
-All code in the examples below is intended to be contained into a [single file](https://github.com/fibo/algebra-ring/blob/master/test.js).
+All code in the examples below is intended to be contained into a [single file](https://github.com/fibo/algebra-ring-ring/blob/master/test.js).
 
 ```javascript
-var ring = require('algebra-ring')
+var ring = require('algebra-ring-ring')
 
 // Define operators.
 function contains (a) {
@@ -38,7 +53,7 @@ var R = ring([0, 1], {
 })
 ```
 
-You get an [algebra ring][1] that is an [algebra group][2] with *multiplication*.
+You get an [algebra-ring ring][1] that is an [algebra-ring group][2] with *multiplication*.
 Its inverse operator is *division*.
 
 This is the list of ring operators:
@@ -86,11 +101,33 @@ R.division(1, 0) // will complain
 R.inversion(R.zero) // will complain too
 ```
 
-## Errors
+## API
+
+### `ring(identity, operator)`
+
+* **@param** `{Array}` identity
+* **@param** `{*}`     identity[0] a.k.a zero
+* **@param** `{*}`     identity[1] a.k.a uno
+* **@param** `{Object}`   operator
+* **@param** `{Function}` operator.contains
+* **@param** `{Function}` operator.equality
+* **@param** `{Function}` operator.addition
+* **@param** `{Function}` operator.negation
+* **@param** `{Function}` operator.multiplication
+* **@param** `{Function}` operator.inversion
+* **@returns** `{Object}` ring
+
+### `ring.error`
+
+An object exposing the following error messages:
 
 * cannotDivideByZero
 * doesNotContainIdentity
 * identityIsNotNeutral
 
+## License
+
+[MIT](http://g14n.info/mit-license/)
+
   [1]: https://en.wikipedia.org/wiki/Ring_(mathematics) "Ring"
-  [2]: https://www.npmjs.com/package/algebra-group "algebra-group"
+  [2]: https://www.npmjs.com/package/algebra-ring-group "algebra-ring-group"
