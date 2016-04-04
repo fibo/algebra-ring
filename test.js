@@ -55,9 +55,9 @@ test('Real ring', function (t) {
 
   t.throws(function () {
     R.division(1, 0)
-  }, error.cannotDivideByZero)
+  }, new RegExp(error.cannotDivideByZero))
 
   t.throws(function () {
     R.inversion(R.zero)
-  }, error.cannotDivideByZero)
+  }, new RegExp(error.cannotDivideByZero))
 })

@@ -1,10 +1,20 @@
 var group = require('algebra-group')
 var staticProps = require('static-props')
 
+var pkg = require('./package.json')
+
+/**
+ * Prepend package name to error message
+ */
+
+function msg (str) {
+  return pkg.name + ': ' + str
+}
+
 var error = {
-  cannotDivideByZero: 'algebra-ring: Cannot divide by zero',
-  doesNotContainIdentity: 'algebra-ring: "identity" must be contained in ring set',
-  identityIsNotNeutral: 'algebra-ring: "identity" is not neutral'
+  cannotDivideByZero: msg('Cannot divide by zero'),
+  doesNotContainIdentity: msg('"identity" must be contained in ring set'),
+  identityIsNotNeutral: msg('"identity" is not neutral')
 }
 
 /**
