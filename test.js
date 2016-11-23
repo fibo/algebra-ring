@@ -1,7 +1,7 @@
-var ring = require('./index')
-var test = require('tape')
+const ring = require('algebra-ring')
+const test = require('tape')
 
-var error = ring.error
+const error = ring.error
 
 function contains (a) {
   return (typeof a === 'number' && isFinite(a))
@@ -17,7 +17,7 @@ function multiplication (a, b) { return a * b }
 
 function inversion (a) { return 1 / a }
 
-var R = ring([0, 1], {
+const R = ring([0, 1], {
   equality: equality,
   contains: contains,
   addition: addition,

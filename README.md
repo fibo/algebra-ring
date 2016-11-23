@@ -6,7 +6,7 @@
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-**Table Of Contents:**
+## Table Of Contents
 
 * [Installation](#installation)
 * [Example](#example)
@@ -26,7 +26,7 @@ $ npm install algebra-ring
 All code in the examples below is intended to be contained into a [single file](https://github.com/fibo/algebra-ring-ring/blob/master/test.js).
 
 ```javascript
-var ring = require('algebra-ring-ring')
+const ring = require('algebra-ring')
 
 // Define operators.
 function contains (a) {
@@ -45,7 +45,7 @@ function multiplication (a, b) { return a * b }
 function inversion (a) { return 1 / a }
 
 // Create a ring by defining its identities and operators.
-var R = ring([0, 1], {
+const R = ring([0, 1], {
   equality: equality,
   contains: contains,
   addition: addition,
