@@ -2,16 +2,14 @@
 
 > defines an [algebra-ring ring][1] structure
 
+[Installation](#installation) |
+[Example](#example) |
+[API](#api) |
+[License](#license)
+
 [![NPM version](https://badge.fury.io/js/algebra-ring.svg)](http://badge.fury.io/js/algebra-ring) [![Build Status](https://travis-ci.org/fibo/algebra-ring.svg?branch=master)](https://travis-ci.org/fibo/algebra-ring?branch=master) [![Dependency Status](https://gemnasium.com/fibo/algebra-ring.svg)](https://gemnasium.com/fibo/algebra-ring)
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
-## Table Of Contents
-
-* [Installation](#installation)
-* [Example](#example)
-* [API](#api)
-* [License](#license)
 
 ## Installation
 
@@ -26,7 +24,7 @@ $ npm install algebra-ring
 All code in the examples below is intended to be contained into a [single file](https://github.com/fibo/algebra-ring-ring/blob/master/test.js).
 
 ```javascript
-const ring = require('algebra-ring')
+var ring = require('algebra-ring')
 
 // Define operators.
 function contains (a) {
@@ -45,7 +43,7 @@ function multiplication (a, b) { return a * b }
 function inversion (a) { return 1 / a }
 
 // Create a ring by defining its identities and operators.
-const R = ring([0, 1], {
+var R = ring([0, 1], {
   equality: equality,
   contains: contains,
   addition: addition,
@@ -107,17 +105,17 @@ R.inversion(R.zero) // will complain too
 
 ### `ring(identity, operator)`
 
-* **@param** `{Array}` identity
-* **@param** `{*}`     identity[0] a.k.a zero
-* **@param** `{*}`     identity[1] a.k.a uno
-* **@param** `{Object}`   operator
-* **@param** `{Function}` operator.contains
-* **@param** `{Function}` operator.equality
-* **@param** `{Function}` operator.addition
-* **@param** `{Function}` operator.negation
-* **@param** `{Function}` operator.multiplication
-* **@param** `{Function}` operator.inversion
-* **@returns** `{Object}` ring
+* **@param** `{Array}` **identity**
+* **@param** `{*}`     **identity[0]** a.k.a zero
+* **@param** `{*}`     **identity[1]** a.k.a one
+* **@param** `{Object}`   **operator**
+* **@param** `{Function}` **operator.contains**
+* **@param** `{Function}` **operator.equality**
+* **@param** `{Function}` **operator.addition**
+* **@param** `{Function}` **operator.negation**
+* **@param** `{Function}` **operator.multiplication**
+* **@param** `{Function}` **operator.inversion**
+* **@returns** `{Object}` **ring**
 
 ### `ring.error`
 
@@ -131,5 +129,5 @@ An object exposing the following error messages:
 
 [MIT](http://g14n.info/mit-license/)
 
-  [1]: https://en.wikipedia.org/wiki/Ring_(mathematics) "Ring"
-  [2]: https://www.npmjs.com/package/algebra-ring-group "algebra-ring-group"
+[1]: https://en.wikipedia.org/wiki/Ring_(mathematics) "Ring"
+[2]: https://www.npmjs.com/package/algebra-ring-group "algebra-ring-group"
