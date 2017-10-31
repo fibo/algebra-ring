@@ -7,9 +7,10 @@
 [API](#api) |
 [License](#license)
 
-[![NPM version](https://badge.fury.io/js/algebra-ring.svg)](http://badge.fury.io/js/algebra-ring) [![Build Status](https://travis-ci.org/fibo/algebra-ring.svg?branch=master)](https://travis-ci.org/fibo/algebra-ring?branch=master) [![Dependency Status](https://gemnasium.com/fibo/algebra-ring.svg)](https://gemnasium.com/fibo/algebra-ring)
-
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+[![NPM version](https://badge.fury.io/js/algebra-ring.svg)](http://badge.fury.io/js/algebra-ring)
+[![Build Status](https://travis-ci.org/fibo/algebra-ring.svg?branch=master)](https://travis-ci.org/fibo/algebra-ring?branch=master)
+[![Dependency Status](https://gemnasium.com/fibo/algebra-ring.svg)](https://gemnasium.com/fibo/algebra-ring)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Installation
 
