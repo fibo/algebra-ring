@@ -1,7 +1,7 @@
 {
   "name": "algebra-ring",
   "description": "defines an algebra ring structure",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "homepage": "http://g14n.info/algebra-ring",
   "author": {
     "name": "Gianluca Casati",
