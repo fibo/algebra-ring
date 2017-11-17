@@ -1,7 +1,7 @@
-var ring = require('algebra-ring')
-var test = require('tape')
+const ring = require('algebra-ring')
+const test = require('tape')
 
-var error = ring.error
+const error = ring.error
 
 function contains (a) {
   return (typeof a === 'number' && isFinite(a))
@@ -17,7 +17,7 @@ function multiplication (a, b) { return a * b }
 
 function inversion (a) { return 1 / a }
 
-var R = ring([0, 1], {
+const R = ring([0, 1], {
   equality: equality,
   contains: contains,
   addition: addition,
@@ -26,7 +26,7 @@ var R = ring([0, 1], {
   inversion: inversion
 })
 
-test('Real ring', function (t) {
+test('Real ring', (t) => {
   t.plan(17)
 
   t.ok(R.contains(10))
@@ -53,11 +53,37 @@ test('Real ring', function (t) {
   t.ok(R.equality(R.multiplication(2, R.one), 2))
   t.ok(R.equality(R.division(2, 2), R.one))
 
-  t.throws(function () {
+  t.throws(() => {
     R.division(1, 0)
   }, new RegExp(error.cannotDivideByZero))
 
-  t.throws(function () {
+  t.throws(() => {
     R.inversion(R.zero)
+  }, new RegExp(error.cannotDivideByZero))
+})
+
+test('Boole ring', (t) => {
+  t.plan(5)
+
+  const Boole = ring([false, true], {
+    equality: (a, b) => (a === b),
+    contains: (a) => (typeof a === 'boolean'),
+    addition: (a, b) => (a || b),
+    negation: (a) => (a),
+    multiplication: (a, b) => (a && b),
+    inversion: (a) => (a)
+  })
+
+  t.ok(Boole.contains(true, false))
+
+  t.equals(Boole.addition(true, Boole.zero), true)
+  t.equals(Boole.multiplication(true, Boole.one), true)
+
+  t.throws(() => {
+    Boole.division(true, false)
+  }, new RegExp(error.cannotDivideByZero))
+
+  t.throws(() => {
+    Boole.inversion(Boole.zero)
   }, new RegExp(error.cannotDivideByZero))
 })

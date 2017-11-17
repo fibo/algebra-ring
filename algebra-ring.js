@@ -1,7 +1,7 @@
-var group = require('algebra-group')
-var staticProps = require('static-props')
+const group = require('algebra-group')
+const staticProps = require('static-props')
 
-var pkg = require('./package.json')
+const pkg = require('./package.json')
 
 /**
  * Prepend package name to error message
@@ -11,7 +11,7 @@ function msg (str) {
   return pkg.name + ': ' + str
 }
 
-var error = {
+const error = {
   cannotDivideByZero: msg('Cannot divide by zero'),
   doesNotContainIdentity: msg('"identity" must be contained in ring set'),
   identityIsNotNeutral: msg('"identity" is not neutral')
@@ -37,7 +37,7 @@ var error = {
 function algebraRing (identity, given) {
   // A ring is a group, with multiplication.
 
-  var ring = group({
+  const ring = group({
     identity: identity[0],
     contains: given.contains,
     equality: given.equality,
@@ -52,6 +52,7 @@ function algebraRing (identity, given) {
   }
 
   function inversion (a) {
+    console.log(a)
     if (ring.equality(a, ring.zero)) {
       throw new TypeError(error.cannotDivideByZero)
     }
@@ -60,7 +61,7 @@ function algebraRing (identity, given) {
   }
 
   function division (a) {
-    var rest = [].slice.call(arguments, 1)
+    const rest = [].slice.call(arguments, 1)
 
     return given.multiplication(a, rest.map(inversion).reduce(given.multiplication))
   }
@@ -71,7 +72,7 @@ function algebraRing (identity, given) {
 
   // Multiplicative identity.
 
-  var one = identity[1]
+  const one = identity[1]
 
   if (ring.notContains(one)) {
     throw new TypeError(error.doesNotContainIdentity)
