@@ -52,7 +52,6 @@ function algebraRing (identity, given) {
   }
 
   function inversion (a) {
-    console.log(a)
     if (ring.equality(a, ring.zero)) {
       throw new TypeError(error.cannotDivideByZero)
     }
