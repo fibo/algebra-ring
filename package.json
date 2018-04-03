@@ -33,12 +33,13 @@
     "url": "https://github.com/fibo/algebra-ring/issues"
   },
   "devDependencies": {
+    "dot-editorconfig": "^1.1.0",
     "pre-commit": "^1.1.2",
     "standa": "^2.0.1",
     "tape": "^4.9.0"
   },
   "dependencies": {
-    "algebra-group": "^0.6.1",
+    "algebra-group": "^0.6.2",
     "static-props": "^1.1.1"
   }
 }
