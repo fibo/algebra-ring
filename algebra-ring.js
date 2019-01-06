@@ -91,6 +91,6 @@ function algebraRing (identities, given) {
   return ring
 }
 
-staticProps(algebraRing)({error: error})
+staticProps(algebraRing)({ error: error })
 
 module.exports = algebraRing
