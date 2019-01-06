@@ -20,9 +20,9 @@ const error = {
 /**
  * Define an algebra ring structure
  *
- * @param {Array} identity
- * @param {*}     identity[0] a.k.a zero
- * @param {*}     identity[1] a.k.a uno
+ * @param {Array} identities
+ * @param {*}     identities[0] a.k.a zero
+ * @param {*}     identities[1] a.k.a uno
  * @param {Object}   given operator functions
  * @param {Function} given.contains
  * @param {Function} given.equality
@@ -34,11 +34,11 @@ const error = {
  * @returns {Object} ring
  */
 
-function algebraRing (identity, given) {
+function algebraRing (identities, given) {
   // A ring is a group, with multiplication.
 
   const ring = group({
-    identity: identity[0],
+    identity: identities[0],
     contains: given.contains,
     equality: given.equality,
     compositionLaw: given.addition,
@@ -71,7 +71,7 @@ function algebraRing (identity, given) {
 
   // Multiplicative identity.
 
-  const one = identity[1]
+  const one = identities[1]
 
   if (ring.notContains(one)) {
     throw new TypeError(error.doesNotContainIdentity)
@@ -82,11 +82,11 @@ function algebraRing (identity, given) {
     throw new TypeError(error.identityIsNotNeutral)
   }
 
-  if (ring.notContains(identity[1])) {
+  if (ring.notContains(identities[1])) {
     throw new TypeError(error.doesNotContainIdentity)
   }
 
-  ring.one = identity[1]
+  ring.one = identities[1]
 
   return ring
 }
